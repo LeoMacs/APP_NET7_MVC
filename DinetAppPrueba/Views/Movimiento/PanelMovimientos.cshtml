@@ -1,0 +1,181 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@* <!DOCTYPE html> *@
+
+<div ng-app="app">
+
+
+    <div ng-controller="myController">
+
+
+
+        <div>
+            <div>
+                <div style="text-align: center">
+                    <h1 class="oscuro">Panel de Movimientos de Inventario </h1>
+                </div>
+                <br />
+                <br />
+
+
+                <div class="row form-inline">
+
+                    <div class="form-inline col-sm">
+                        <label class=" col-form-label" style="color:black" for="tipoMovimiento">Fecha Transacción:</label>
+                        <input type="date" class=" form-control" id="fecdesde" value="" style="width: 100px"  />
+                        <input type="date" class=" form-control" id="fechasta" value="" style="width: 100px" />
+                    </div>
+
+                    <div class="form-inline col-sm">
+                        <label class=" col-form-label" style="color:black" for="tipoMovimiento">Tipo Movimiento:</label>
+                        <input type="text" class=" form-control"  id="tipoMovimiento" value="" style="width: 80px" placeholder="dato..." />
+                    </div> 
+                    <div class="form-inline col-sm">
+                        <label class=" col-form-label" style="color:black" for="nroDoc">Nro Documento:</label>
+                        <input type="text" class=" form-control" id="tipoMovimiento" value="" style="width: 80px" placeholder=" dato..." />
+                    </div>
+                    <div class="form-inline col-sm">
+                        <button style="float: right; margin-bottom: 10px; margin-left: 0px" class="btn btn-info" ng-click="pushRegMod1()"><i class="glyphicon glyphicon-search"></i>Buscar</button>
+                    </div>
+
+                </div>
+
+
+                <div class="container">
+
+                    <div>
+                        <button style="float: right; margin-bottom: 10px; margin-left: 0px" class="btn btn-primary btnCircular " ng-click="pushRegMod1()" data-toggle="modal" data-target="#modalInsUpd"><i class="glyphicon glyphicon-plus"></i>Agregar Movimiento</button>
+                    </div>
+                    <div class="form-inline letra">
+                        <label>Total de Movimientos:</label>
+                        <input value="{{numMovimientos}}" readonly="true" style="width: 50px; height: 25px; text-align: center; font-weight: bold; color: blue; font-size: 18px" />
+                    </div>
+                    <table class="table table-bordered table-responsive-xl" id="tablaDatos">
+                        <thead style="color: white; background-color: red">
+                            <tr>
+                                <th style="text-align: center">Compañia Venta</th>
+                                <th style="text-align: center">Almacén Venta</th>
+                                <th style="text-align: center">Tipo Movimiento</th>
+                                <th style="text-align: center">Tipo Documento</th>
+                                <th style="text-align: center">Nro Documento</th>
+                                <th style="text-align: center">COD ITEM</th>
+                                <th style="text-align: center">Fecha Transaccíón</th>
+                                <th style="text-align: center">EDITAR</th>
+                            </tr>
+                        </thead>
+                        <tbody style="text-align: center">
+
+
+                            <tr ng-repeat="m in movimientos">
+                                <td style="color: #0026ff; font-weight: bold">
+                                    {{m.COMPANIA_VENTA_3}}
+                                </td>
+
+                                <td style="color: #0026ff; font-weight: bold">
+                                    {{m.ALMACEN_VENTA}}
+                                </td>
+
+                                <td style="color: #0026ff; font-weight: bold">
+                                    {{m.TIPO_MOVIMIENTO}}
+                                </td>
+
+                                <td style="color: #0026ff; font-weight: bold">
+                                    {{m.TIPO_DOCUMENTO}}
+                                </td>
+
+                                <td style="color: #0026ff; font-weight: bold">
+                                    {{m.NRO_DOCUMENTO}}
+                                </td>
+
+                                <td style="color: #0026ff; font-weight: bold">
+                                    {{m.COD_ITEM_2}}
+                                </td>
+
+                                <td style="color: #0026ff; font-weight: bold">
+                                    {{m.FECHA_TRANSACCION}}
+                                </td>
+
+
+                                <td>
+                                    <button type="button" class="btn btn-primary" ng-click="pushRegMod2(m)" data-toggle="modal" data-target="#modalInsUpd"><i class="glyphicon glyphicon-pencil"></i></button>
+                                </td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+           
+            
+
+            @*<--------------------------------Modal agregar/ actualizar empresas------------------------------------------>*@
+            @*<-- Modal -->*@
+            <div class="modal fade" id="modalInsUpd" role="dialog">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        @*<-- Modal Header -->*@
+                        <div class="modal-header btn-primary">
+                            <button type="button" class="close" data-dismiss="modal">
+                                <span aria-hidden="true">×</span>
+                                <span class="sr-only">Close</span>
+                            </button>
+                            <h4 class="modal-title contenidoCentrado oscuro" id="myModalLabel">FORMULARIO DE MOVIMIENTO</h4>
+                        </div>
+                        @*<-- Modal Body -->*@
+                        <div class="modal-body">
+                            <p class="statusMsg" id="mensajeValidar">{{mensaje}}</p>
+                            <form role="form" novalidate>
+
+                                <div class="form-group">
+                                    <label for="inputName">TIPO MOVIMIENTO:</label>
+                                    <input type="text" class="form-control inputStyle" ng-model="movimiento.TIPO_MOVIMIENTO" ng-required="true" id="tipMovimiento" placeholder="Ingrese el Tipo de Movimiento" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="inputName">TIPO DOCUMENTO:</label>
+                                    <input type="text" class="form-control inputStyle" ng-model="movimiento.TIPO_DOCUMENTO" ng-required="true" id="tipDoc" placeholder="Ingrese el Tipo de Documento" />
+                                </div>
+
+
+                                <div class="form-group">
+                                    <label for="descripcion">NRO DOCUMENTO:</label>
+                                    <input type="text" class="form-control inputStyle" ng-model="movimiento.NRO_DOCUMENTO" ng-required="true" id="nroDoc" placeholder="Ingrese el Número de Documento"></input>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="descripcion">CODIGO ITEM:</label>
+                                    <input type="text" class="form-control inputStyle" ng-model="movimiento.COD_ITEM_2" ng-required="true" id="codItem" placeholder="Ingrese el Código Item"></input>
+                                </div>
+
+                            </form>
+                        </div>
+                        @*<-- Modal Footer -->*@
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger btnSize" data-dismiss="modal">CERRAR</button>
+                            <button type="submit" class="btn btn-primary submitBtn btnSize" ng-click="insupd_MOVIMIENTO()">{{btntext}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*</-----------------------------------end modal------------------------------------------------------>*@
+
+
+
+        </div>
+
+
+
+        @*------jQuery library ------*@
+        <script src="~/js/jquery-3.7.1.min.js"></script>   
+        <script src="~/js/bootstrap.min.js"></script>  @* para modales *@
+        <script src="~/js/angular.min.js"></script>
+        @*------Controlador----------*@
+        <script src="~/js/MovimientosAngular.js"></script>
+       
+    </div>
+</div>
