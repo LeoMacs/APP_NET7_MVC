@@ -13,10 +13,6 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\MARCO\\Desktop\\carpeta evaluacion\\Dinet\\DinetAppPrueba\\DinetAppPrueba\\wwwroot\\js\\MovimientosAngular.js",
-      "PackagePath": "staticwebassets\\js\\MovimientosAngular.js"
-    },
-    {
       "Id": "C:\\Users\\MARCO\\Desktop\\carpeta evaluacion\\Dinet\\DinetAppPrueba\\DinetAppPrueba\\wwwroot\\js\\angular.js",
       "PackagePath": "staticwebassets\\js\\angular.js"
     },
@@ -27,6 +23,14 @@
     {
       "Id": "C:\\Users\\MARCO\\Desktop\\carpeta evaluacion\\Dinet\\DinetAppPrueba\\DinetAppPrueba\\wwwroot\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\MARCO\\Desktop\\carpeta evaluacion\\Dinet\\DinetAppPrueba\\DinetAppPrueba\\wwwroot\\js\\controlJS\\MovimientosAngular.js",
+      "PackagePath": "staticwebassets\\js\\controlJS\\MovimientosAngular.js"
+    },
+    {
+      "Id": "C:\\Users\\MARCO\\Desktop\\carpeta evaluacion\\Dinet\\DinetAppPrueba\\DinetAppPrueba\\wwwroot\\js\\controlJS\\TarjetaAngular.js",
+      "PackagePath": "staticwebassets\\js\\controlJS\\TarjetaAngular.js"
     },
     {
       "Id": "C:\\Users\\MARCO\\Desktop\\carpeta evaluacion\\Dinet\\DinetAppPrueba\\DinetAppPrueba\\wwwroot\\js\\jquery-3.7.1.min.js",

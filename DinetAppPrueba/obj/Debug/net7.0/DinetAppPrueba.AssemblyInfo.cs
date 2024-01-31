@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DinetAppPrueba")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+211712d1620033e41387132169fd10fc913833e2")]
 [assembly: System.Reflection.AssemblyProductAttribute("DinetAppPrueba")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DinetAppPrueba")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

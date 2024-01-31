@@ -2,12 +2,12 @@
 
 namespace DinetAppPrueba.Models
 {
-    public class tarjetaCredito
+    public class TarjetaCredito
     {
         [Key]
-        public int Id { get; set; }
+        public int idTarjeta { get; set; }
         [Required]
-        public string titulo { get; set; }
+        public string titular { get; set; }
         [Required]
         public string numeroTarjeta { get; set; }
         [Required]

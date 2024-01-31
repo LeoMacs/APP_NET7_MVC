@@ -23,13 +23,13 @@ namespace DinetAppPrueba.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> getMovimientos(filtros f)
+        public async Task<JsonResult> getMovimientos( filtros f)
         {
             return new JsonResult(await _service.getMovimientos(f));
         }
 
         [HttpGet]
-        public async Task<JsonResult> getMovimientosxUnidad(MovInventario obj)
+        public async Task<JsonResult> getMovimientosxUnidad( MovInventario obj)
         {
             return new JsonResult(await _service.getMovimientoxUNIDAD(obj));
         }
@@ -42,7 +42,7 @@ namespace DinetAppPrueba.Controllers
         }
 
         [HttpPut]
-        public async Task<JsonResult> EditMovimiento(MovInventario obj)
+        public async Task<JsonResult> EditMovimiento( MovInventario obj)
         {
             return new JsonResult(await _service.EditMovimientos(obj));
         }

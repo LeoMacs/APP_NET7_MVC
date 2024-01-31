@@ -1,0 +1,117 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+
+    <style>
+        .far {
+            cursor: pointer;
+        }
+
+        .green-icon {
+            color: limegreen;
+        }
+
+        .red-icon {
+            color: crimson;
+        }
+    </style>
+
+
+<div ng-app="app">
+    <div ng-controller="myController">
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="titulo text-center">TARJETA DE CRÉDITO</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <button style="float: right; margin-bottom: 10px; margin-left: 0px" class="btn btn-primary" ng-click="onCreate()"><i class="glyphicon glyphicon-plus"></i>AGREGAR</button>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="titulo text-center">{{accion}} TARJETA</h1>
+                            <form>
+                                <div class="input-group input-group-lg mb-3">
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    <input name="titular" type="text" class="form-control" ng-model="tarjeta.titular" placeholder="Titular" ng-required="true">
+                                </div>
+                                <div class="input-group input-group-lg mb-3">
+                                    <span class="input-group-text"><i class="fas  fa-credit-card"></i></span>
+                                    <input name="numeroTarjeta" type="text" class="form-control" ng-model="tarjeta.numeroTarjeta" maxlength="16" placeholder="Número Tarjeta" ng-required="true">
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-7">
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text"><i class="fas  fa-calendar-alt"></i></span>
+                                            <input name="fechaExpiracion" type="text" class="form-control" ng-model="tarjeta.fechaExpiracion" maxlength="7" placeholder="MM/YYYY" ng-required="true">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <div class="input-group input-group-lg mb-3">
+                                            <span class="input-group-text"><i class="fas  fa-key"></i></span>
+                                            <input name="cvv" type="password" class="form-control" ng-model="tarjeta.cvv" maxlength="4" placeholder="CVV" ng-required="true">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button ng-click="createupate_Tarjeta()" class="btn btn-success btn-lg">
+                                        <i class="fas  fa-database"></i>
+                                        &nbsp;Aceptar
+                                    </button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="titulo text-center">LISTADO DE TARJETA</h1>
+
+                            <table class="table table-dark">
+                                <tbody>
+                                    <tr ng-repeat="t in tarjetas">
+
+                                        <td>{{t.titular}}</td>
+                                        <td>{{t.numeroTarjeta}}</td>
+                                        <td>{{t.fechaExpiracion}}</td>
+                                        <td><i ng-click="onUpdate(t)" class="far fa-edit text-info"></i></td>
+                                        <td><i ng-click="del_Tarjeta(t.idTarjeta)" class="far fa-trash-alt text-danger"></i></td>
+
+                                    </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        @*------jQuery library ------*@
+        <script src="~/js/jquery-3.7.1.min.js"></script>
+        <script src="~/js/bootstrap.min.js"></script>  @* para modales *@
+        <script src="~/js/angular.min.js"></script>
+        @*------Controlador----------*@
+        <script src="~/js/controlJS/TarjetaAngular.js"></script>
+
+    </div>
+</div>
+
+

@@ -3,6 +3,8 @@ using DinetAppPrueba.BussinessLogic.services;
 using DinetAppPrueba.DataAccess.Data;
 using DinetAppPrueba.DataAccess.implementacion;
 using DinetAppPrueba.DataAccess.Interfaces;
+using Microsoft.Extensions.Options;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,12 @@ builder.Services.AddSingleton<ConexionService>();
 builder.Services.AddSingleton<IMovimientosService, MovimientosService>();
 builder.Services.AddSingleton<IMovimientos, MovimientosDA>();
 
+/////////ENTITY FRAMEWORK-INYECCION DE DEPENDENCIAS/////////////////
+builder.Services.AddDbContext<AppDBContext>(Options=>
+{
+    Options.UseSqlServer(builder.Configuration.GetConnectionString("BackendConexion"));
+});
+//////////////////////////////////////////////////////////////////
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -33,6 +41,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Movimiento}/{action=panelMovimientos}/{id?}");
+    pattern: "{controller=Tarjeta}/{action=panelTarjetas}/{id?}");
 
 app.Run();
