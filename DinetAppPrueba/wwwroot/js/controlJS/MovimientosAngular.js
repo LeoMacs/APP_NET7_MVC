@@ -1,18 +1,15 @@
 ﻿var app = angular.module("app", []);
 
-
 app.controller("myController", function ($scope, $http) {
 
     var accion = "";
 
-
-
     /****************GET MOVIMIENTOS**********************************/
     var parametros = {
-        NRO_DOCUMENTO: null,
-        TIPO_MOVIMIENTO: null,
-        FECHA_INI: null,
-        FECHA_FIN: null
+        NRO_DOCUMENTO: "",
+        TIPO_MOVIMIENTO: "",
+        FECHA_INI: "",
+        FECHA_FIN: ""
     };
 
     $http.get("/Movimiento/getMovimientos", { params: parametros }).
@@ -26,32 +23,54 @@ app.controller("myController", function ($scope, $http) {
         });
 
 
-    $scope.loadMovimientos = function (filtros) {
-        $http({
-            method: "GET",
-            url: "/Movimiento/getMovimientos",
-            datatype: "json",
-            data: JSON.stringify(filtros)
-        }).then(function (response) {
-            $scope.movimientos = response.data;
-            $scope.numMovimientos = response.data.length;
-        }).catch(function (error) {
-            alert('No se pudo obtener los movimientos!!');
-            console.error('Error al obtener Movimientos: ', error);
-        });
-    };
+
     //funciona
+    $scope.loadMovimientos = function (filtros) {
+        $http.get("/Movimiento/getMovimientos", { params: filtros }).
+            then(function (response) {
+                $scope.movimientos = response.data;
+                $scope.numMovimientos = response.data.length;
+            })
+            .catch(function (error) {
+                alert('No se pudo obtener los movimientos!!');
+                console.error('Error al obtener Movimientos: ', error);
+            });
+    };  
+
     //$scope.loadMovimientos = function (filtros) {
-    //    $http.get("/Movimiento/getMovimientos", { params: filtros }).
-    //        then(function (d) {
-    //            $scope.movimientos = d.data;
-    //            $scope.numMovimientos = d.data.length;
-    //        })
-    //        .catch(function (error) {
-    //            alert('No se pudo obtener los movimientos!!');
-    //            console.error('Error al obtener Movimientos: ', error);
-    //        });
-    //};  
+    //    $http({
+    //        method: "GET",
+    //        url: "/Movimiento/getMovimientos",
+    //        datatype: "json",
+    //        data: JSON.stringify(filtros)
+    //    }).then(function (response) {
+    //        $scope.movimientos = response.data;
+    //        $scope.numMovimientos = response.data.length;
+    //    }).catch(function (error) {
+    //        alert('No se pudo obtener los movimientos!!');
+    //        console.error('Error al obtener Movimientos: ', error);
+    //    });
+    //};
+
+
+    /****************BUSQUEDA**********************************/
+
+
+
+    $scope.buscar_Movimiento = function () {
+        alert("Buscando!!");
+        var filtros = {
+            NRO_DOCUMENTO: $('#nroDocumento').val(),
+            TIPO_MOVIMIENTO: $('#tipoMovimiento').val(),
+            FECHA_INI: $('#fecdesde').val(),
+            FECHA_FIN: $('#fechasta').val()
+        };
+        console.log(filtros);
+
+        $scope.loadMovimientos(filtros);
+    };
+
+    
 
 
     $scope.loadMovimientoxUnidad = function (mov) {
@@ -185,11 +204,6 @@ app.controller("myController", function ($scope, $http) {
 
 
     /****************INS_UPD MOVIMIENTOS**********************************/
-    $scope.cerrarModalRegMod = function () {
-        $('#modalInsUpd').modal('hide');
-    };
-
-
     $scope.insupd_MOVIMIENTO = function () {
         if (accion == "ins") {
             $scope.ins_movimiento();
@@ -198,45 +212,10 @@ app.controller("myController", function ($scope, $http) {
         }
     };
 
-    ////////**************************** Mostrar todas las empresas*****************
-    //$http.get("/Movimiento/getMovimientos").then(function (d) {
-    //    $scope.empresas = d.data;
-    //    $scope.numempresas = d.data.length;
 
-    //}, function (error) {
-    //    alert('Failed');
-    //});
-
-
-
-    //$scope.pushMovimientos = function (movimiento) {
-    //    var idempresa = empresa.idempresa;
-    //    $scope.nombreEmpresa = empresa.nombre;
-    //    var url_data = "/Empresa/Get_Personalxempresa?id=" + idempresa;
-    //    $scope.loadListTrabajadores(url_data);
-
-    //};
-
-
-
-
-
-
-
-
-    /////****************Obtener empresa*******************************///
-    //$scope.loadempresa = function (empresa) {
-
-    //    $http.get("/Empresa/Get_empresabyid?id=" + empresa.idempresa).then(function (d) {
-    //        $scope.empresa = d.data[0];
-    //    }, function (error) {
-    //        alert('Failed');
-    //    });
-
-    //};
-
-
-
+    $scope.cerrarModalRegMod = function () {
+        $('#modalInsUpd').modal('hide');
+    };
 
 
 });

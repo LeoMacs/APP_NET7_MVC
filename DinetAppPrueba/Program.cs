@@ -41,6 +41,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Tarjeta}/{action=panelTarjetas}/{id?}");
+    pattern: "{controller=Movimiento}/{action=panelMovimientos}/{id?}");
 
 app.Run();
